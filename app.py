@@ -58,40 +58,41 @@ if __name__ == '__main__':
     
     #processing 
     uploaded_file = st.file_uploader("Upload label output from Qual App", type = ['csv'])
-    df = pd.read_csv(uploaded_file)
-    df_block_1 = df[['model_label_1', 'score_1']]
-    df_block_1.columns = ['label', 'score']
-    df_block_2 = df[['model_label_2', 'score_2']]
-    df_block_2.columns = ['label', 'score']
-    df_unfold = pd.concat([df_block_1,df_block_2])
-
-    threshhold =  st.slider('Set threshhold level', 0, 1, 0.3)
-    df_filt = df_unfold[df_unfold['score'] >= threshhold]
-
-    ##### vis ######
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        df_block_1 = df[['model_label_1', 'score_1']]
+        df_block_1.columns = ['label', 'score']
+        df_block_2 = df[['model_label_2', 'score_2']]
+        df_block_2.columns = ['label', 'score']
+        df_unfold = pd.concat([df_block_1,df_block_2])
     
-    df_filt_count = df_filt.groupby('label').count().reset_index()
-    # create dataset
-    height = list(df_filt_count['score'])
-    bars = tuple(df_filt_count['label'])
+        threshhold =  st.slider('Set threshhold level', 0.0, 1.0, 0.3)
+        df_filt = df_unfold[df_unfold['score'] >= threshhold]
     
-    fig = plt.subplots(figsize =(12, 8))
-    x_pos = np.arange(len(bars))
-
-    # Create bars and choose color
-    plt.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
-     
-    # Add title and axis names
-    plt.title('Count of Labels in Dataset')
-    plt.xlabel('categories')
-    plt.xticks(rotation=90)
-    plt.ylabel('Count')
-     
-    # Create names on the x axis
-    plt.xticks(x_pos, bars)
-
-    # Show graph
-    st.pyplot(fig)
+        ##### vis ######
+        
+        df_filt_count = df_filt.groupby('label').count().reset_index()
+        # create dataset
+        height = list(df_filt_count['score'])
+        bars = tuple(df_filt_count['label'])
+        
+        fig = plt.subplots(figsize =(12, 8))
+        x_pos = np.arange(len(bars))
+    
+        # Create bars and choose color
+        plt.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
+         
+        # Add title and axis names
+        plt.title('Count of Labels in Dataset')
+        plt.xlabel('categories')
+        plt.xticks(rotation=90)
+        plt.ylabel('Count')
+         
+        # Create names on the x axis
+        plt.xticks(x_pos, bars)
+    
+        # Show graph
+        st.pyplot(fig)
     
     
     
