@@ -93,7 +93,15 @@ if __name__ == '__main__':
     
         #Show graph
         st.pyplot(fig)
-    
-    
+        
+        tote = df_filt_count['score'].sum()
+        percent = []
+        for i, row in df_filt_count.iterrows():
+            percent.append(row['score']/tote)
+        
+        st.dataframe(df_filt_count)
+        
+            
+        
     
     
