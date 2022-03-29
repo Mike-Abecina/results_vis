@@ -99,6 +99,7 @@ if __name__ == '__main__':
         for i, row in df_filt_count.iterrows():
             percent.append(row['score']/tote)
         
+        df_filt_count['percent'] = percent
         st.dataframe(df_filt_count)
         
             
