@@ -76,7 +76,7 @@ if __name__ == '__main__':
         height = list(df_filt_count['score'])
         bars = tuple(df_filt_count['label'])
         
-        fig, ax = plt.subplots(figsize =(7, 4))
+        fig = plt.figure(figsize =(7, 4))
         x_pos = np.arange(len(bars))
         
         '''
@@ -87,13 +87,13 @@ if __name__ == '__main__':
         '''
     
         # Create bars and choose color
-        ax.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
+        plt.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
          
         # Add title and axis names
-        fig.title('Count of Labels in Dataset')
-        fig.xlabel('categories')
-        fig.xticks(rotation=90)
-        fig.ylabel('Count')
+        plt.title('Count of Labels in Dataset')
+        plt.xlabel('categories')
+        plt.xticks(rotation=90)
+        plt.ylabel('Count')
          
         # Create names on the x axis
         plt.xticks(x_pos, bars)
