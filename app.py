@@ -76,7 +76,7 @@ if __name__ == '__main__':
         height = list(df_filt_count['score'])
         bars = tuple(df_filt_count['label'])
         
-        fig = plt.subplots(figsize =(12, 8))
+        fig, _ = plt.subplots(figsize =(12, 8))
         x_pos = np.arange(len(bars))
     
         # Create bars and choose color
