@@ -66,7 +66,7 @@ if __name__ == '__main__':
         df_block_2.columns = ['label', 'score']
         df_unfold = pd.concat([df_block_1,df_block_2])
     
-        threshhold =  st.slider('Set threshhold level', 0.0, 1.0, 0.3)
+        threshhold =  st.sidebar.slider('Set threshhold level', 0.0, 1.0, 0.3)
         df_filt = df_unfold[df_unfold['score'] >= threshhold]
     
         ##### vis ######
