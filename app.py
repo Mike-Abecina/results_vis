@@ -46,7 +46,7 @@ import streamlit as st
 # plt.show()
 
 if __name__ == '__main__':
-    st.set_page_config(layout="wide")
+
     
     ##############
     #PHASE 1 Login
