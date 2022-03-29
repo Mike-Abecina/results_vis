@@ -89,16 +89,16 @@ if __name__ == '__main__':
         # Create bars and choose color
         ax.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
          
-        # # Add title and axis names
-        # ax.title('Count of Labels in Dataset')
-        # ax.xlabel('categories')
-        # ax.xticks(rotation=90)
-        # ax.ylabel('Count')
+        # Add title and axis names
+        fig.title('Count of Labels in Dataset')
+        fig.xlabel('categories')
+        fig.xticks(rotation=90)
+        fig.ylabel('Count')
          
-        # # Create names on the x axis
-        # plt.xticks(x_pos, bars)
+        # Create names on the x axis
+        plt.xticks(x_pos, bars)
     
-        # Show graph
+        #Show graph
         st.pyplot(fig)
     
     
